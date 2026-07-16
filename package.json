@@ -1,6 +1,6 @@
 {
   "name": "env-ok-kit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tiny TypeScript environment validator — env({ PORT: Number, DATABASE: String }) with Enum, Boolean, Email, URL, Port, Secret, and defaults.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -42,7 +42,12 @@
     "port",
     "secret",
     "dotenv",
-    "nodejs"
+    "nodejs",
+    "env-validation",
+    "config-validation",
+    "environment-variables",
+    "type-safe",
+    "validation"
   ],
   "author": "Anil Kumar <anilachary67@gmail.com>",
   "license": "MIT",
