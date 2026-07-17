@@ -1,12 +1,12 @@
-# Contributing to env-ok-kit
+# Contributing to env-ok
 
-Thanks for helping improve **env-ok-kit**.
+Thanks for helping improve **env-ok**.
 
 ## Development
 
 ```bash
 git clone https://github.com/theinfyark/env-ok.git
-cd env-ok-kit
+cd env-ok
 npm install
 npm test
 npm run build --if-present

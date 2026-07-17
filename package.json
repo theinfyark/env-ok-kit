@@ -1,5 +1,5 @@
 {
-  "name": "env-ok-kit",
+  "name": "env-ok",
   "version": "1.0.2",
   "description": "Tiny TypeScript environment validator — env({ PORT: Number, DATABASE: String }) with Enum, Boolean, Email, URL, Port, Secret, and defaults.",
   "type": "module",
@@ -29,6 +29,7 @@
     "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
   "keywords": [
+    "env-ok",
     "env",
     "environment",
     "validator",

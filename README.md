@@ -1,8 +1,8 @@
-# env-ok-kit
+# env-ok
 
 ## Introduction
 
-**env-ok-kit** is a tiny TypeScript environment validator for Node.js.
+**env-ok** is a tiny TypeScript environment validator for Node.js.
 
 Instead of:
 
@@ -13,7 +13,7 @@ process.env.PORT
 Do:
 
 ```ts
-import { env } from "env-ok-kit";
+import { env } from "env-ok";
 
 const config = env({
   PORT: Number,
@@ -28,12 +28,12 @@ Works from **TypeScript and JavaScript** (ESM + CommonJS + `.d.ts`).
 
 ## Why this package exists
 
-Reading `process.env` is unsafe: values are always strings, often missing, and easy to mis-parse. **env-ok-kit** gives you a typed config object with clear errors at startup — without a heavy schema framework.
+Reading `process.env` is unsafe: values are always strings, often missing, and easy to mis-parse. **env-ok** gives you a typed config object with clear errors at startup — without a heavy schema framework.
 
 ## Installation
 
 ```bash
-npm install env-ok-kit
+npm install env-ok
 ```
 
 Requires Node.js 18+.
@@ -55,7 +55,7 @@ Requires Node.js 18+.
 ### TypeScript
 
 ```ts
-import { env, Port, Email, Enum, Secret } from "env-ok-kit";
+import { env, Port, Email, Enum, Secret } from "env-ok";
 
 const config = env({
   PORT: Port,
@@ -71,7 +71,7 @@ const config = env({
 ### JavaScript
 
 ```js
-import { env, Port, Email, Enum, Secret } from "env-ok-kit";
+import { env, Port, Email, Enum, Secret } from "env-ok";
 
 const config = env({
   PORT: Port,
@@ -132,7 +132,7 @@ const config = env({
 ## Advanced Examples
 
 ```ts
-import { env, Enum, Port } from "env-ok-kit";
+import { env, Enum, Port } from "env-ok";
 
 const config = env(
   {
@@ -170,7 +170,7 @@ const config = env({ PORT: Number, FLAG: Boolean });
 ## Error Handling
 
 ```ts
-import { env, EnvError } from "env-ok-kit";
+import { env, EnvError } from "env-ok";
 
 try {
   env({ PORT: Number });
@@ -200,10 +200,10 @@ Single synchronous pass at startup. No dependencies. Suitable for serverless col
 No — use `dotenv` / your platform secrets, then call `env()`.
 
 **Can I use CommonJS?**  
-Yes: `const { env } = require("env-ok-kit")`.
+Yes: `const { env } = require("env-ok")`.
 
 **How is this different from env-safe-plus?**  
-`env-ok-kit` is TypeScript-first with constructor/`Enum` schema style and stronger inference. `env-safe-plus` uses string type names (`"number"`).
+`env-ok` is TypeScript-first with constructor/`Enum` schema style and stronger inference. `env-safe-plus` uses string type names (`"number"`).
 
 ## Migration Guide
 
@@ -220,7 +220,7 @@ Breaking changes only in major versions (`CHANGELOG.md`).
 | Symptom | Fix |
 |---------|-----|
 | `PORT is missing` | Export the var or add `default` |
-| Types are `unknown` | Ensure imports from `env-ok-kit` and TS 5+ |
+| Types are `unknown` | Ensure imports from `env-ok` and TS 5+ |
 | Boolean not parsing | Use `true/false`, `1/0`, `yes/no`, `on/off` |
 
 ## Contributing
