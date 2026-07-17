@@ -1,6 +1,6 @@
 {
-  "name": "env-ok",
-  "version": "1.0.2",
+  "name": "env-ok-kit",
+  "version": "1.0.3",
   "description": "Tiny TypeScript environment validator — env({ PORT: Number, DATABASE: String }) with Enum, Boolean, Email, URL, Port, Secret, and defaults.",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -29,7 +29,7 @@
     "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
   "keywords": [
-    "env-ok",
+    "env-ok-kit",
     "env",
     "environment",
     "validator",
@@ -54,12 +54,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theinfyark/env-ok.git"
+    "url": "git+https://github.com/theinfyark/env-ok-kit.git"
   },
   "bugs": {
-    "url": "https://github.com/theinfyark/env-ok/issues"
+    "url": "https://github.com/theinfyark/env-ok-kit/issues"
   },
-  "homepage": "https://github.com/theinfyark/env-ok#readme",
+  "homepage": "https://github.com/theinfyark/env-ok-kit#readme",
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/anilachary"
