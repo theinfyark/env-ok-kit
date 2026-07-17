@@ -10,7 +10,7 @@ import {
   Secret,
 } from "../src/index.js";
 
-describe("env-ok", () => {
+describe("env-ok-kit", () => {
   it("parses Number and String like env({ PORT: Number, DATABASE: String })", () => {
     const config = env(
       {

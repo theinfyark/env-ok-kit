@@ -118,7 +118,7 @@ export interface EnvOptions {
  *
  * @example
  * ```ts
- * import { env, Port, Email, Enum } from "env-ok";
+ * import { env, Port, Email, Enum } from "env-ok-kit";
  *
  * const config = env({
  *   PORT: Number,
