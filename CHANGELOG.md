@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0] - 2026-08-24
+
+### Changed
+
+- Coercion failures in `env()` now throw `EnvError` instead of bare strings, while still collecting issues (string fallback remains)
+
+### Fixed
+
+- Invalid `PORT` (and other typed fields) now surface as `EnvError` instances
+
 ## [1.0.3] - 2026-07-17
 
 ### Changed

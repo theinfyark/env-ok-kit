@@ -72,6 +72,18 @@ describe("env-ok-kit", () => {
     ).toThrow(EnvError);
   });
 
+  it("invalid PORT throws EnvError with instanceof", () => {
+    try {
+      env({ PORT: Port }, { source: { PORT: "not-a-port" } });
+      expect.fail("expected EnvError");
+    } catch (err) {
+      expect(err instanceof EnvError).toBe(true);
+      expect((err as EnvError).issues.some((issue) => issue.includes("PORT"))).toBe(
+        true,
+      );
+    }
+  });
+
   it("safeEnv returns ok/error", () => {
     const ok = safeEnv({ PORT: Number }, { source: { PORT: "1" } });
     expect(ok.ok).toBe(true);

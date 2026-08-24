@@ -60,17 +60,17 @@ function coerce(
     case "string":
       return value;
     case "secret":
-      if (!value) throw `${key} must be a non-empty secret`;
+      if (!value) throw new EnvError([`${key} must be a non-empty secret`]);
       return value;
     case "number": {
       const n = Number(value);
-      if (!Number.isFinite(n)) throw `${key} must be a number (got "${raw}")`;
+      if (!Number.isFinite(n)) throw new EnvError([`${key} must be a number (got "${raw}")`]);
       return n;
     }
     case "port": {
       const n = Number(value);
       if (!Number.isInteger(n) || n < 1 || n > 65535) {
-        throw `${key} must be a valid port 1–65535 (got "${raw}")`;
+        throw new EnvError([`${key} must be a valid port 1–65535 (got "${raw}")`]);
       }
       return n;
     }
@@ -78,11 +78,11 @@ function coerce(
       const lower = value.toLowerCase();
       if (TRUE.has(lower)) return true;
       if (FALSE.has(lower)) return false;
-      throw `${key} must be a boolean (got "${raw}")`;
+      throw new EnvError([`${key} must be a boolean (got "${raw}")`]);
     }
     case "email": {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        throw `${key} must be a valid email (got "${raw}")`;
+        throw new EnvError([`${key} must be a valid email (got "${raw}")`]);
       }
       return value;
     }
@@ -92,19 +92,19 @@ function coerce(
         new URL(value);
         return value;
       } catch {
-        throw `${key} must be a valid URL (got "${raw}")`;
+        throw new EnvError([`${key} must be a valid URL (got "${raw}")`]);
       }
     }
     case "enum": {
       const marker = field.type as TypeMarker;
       const values = marker.values ?? [];
       if (!values.includes(value)) {
-        throw `${key} must be one of: ${values.join(", ")} (got "${raw}")`;
+        throw new EnvError([`${key} must be one of: ${values.join(", ")} (got "${raw}")`]);
       }
       return value;
     }
     default:
-      throw `${key} has unsupported type`;
+      throw new EnvError([`${key} has unsupported type`]);
   }
 }
 
@@ -173,7 +173,11 @@ export function env<S extends EnvSchema>(
     try {
       result[key] = coerce(key, raw as string, field);
     } catch (err) {
-      issues.push(typeof err === "string" ? err : String(err));
+      if (err instanceof EnvError) {
+        issues.push(...err.issues);
+      } else {
+        issues.push(typeof err === "string" ? err : String(err));
+      }
     }
   }
 
